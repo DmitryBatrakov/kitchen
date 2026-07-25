@@ -26,9 +26,12 @@ export default function GalleryPage({
 
   return (
     <Section>
-      <div className="mb-10 text-center">
-        <h1 className="text-4xl font-bold text-primary sm:text-5xl">{t("title")}</h1>
-        <p className="mt-3 text-lg text-primary/70">{t("subtitle")}</p>
+      <div className="mb-14 text-center">
+        <span className="eyebrow">{t("eyebrow")}</span>
+        <h1 className="mt-5 font-serif text-4xl font-medium text-primary sm:text-5xl lg:text-6xl">
+          {t("title")}
+        </h1>
+        <p className="mt-4 text-lg text-primary/65">{t("subtitle")}</p>
       </div>
       <GalleryGrid />
     </Section>

@@ -1,80 +1,58 @@
 import { useTranslations } from "next-intl";
-import { Phone, Mail, MapPin } from "lucide-react";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import { Container } from "../ui/Container";
-import { buttonVariants } from "../ui/Button";
 import { site, telHref, mailHref } from "../../lib/site";
-import { cn } from "../../lib/utils";
 
 export const Footer = () => {
   const t = useTranslations("footer");
-  const tc = useTranslations("contact");
 
   return (
-    <footer className="bg-primary text-bg">
-      <Container className="grid gap-10 py-14 sm:grid-cols-2 lg:grid-cols-3">
+    <footer className="border-t border-line bg-ink">
+      <Container className="flex flex-col items-center gap-8 py-16 text-center">
         {/* Бренд */}
-        <div>
-          <div className="text-2xl font-bold">
-            נגר<span className="text-accent">.il</span>
-          </div>
-          <p className="mt-3 max-w-xs text-sm text-bg/70">{tc("languages")}</p>
+        <div className="font-serif text-3xl font-medium tracking-wide text-primary">
+          נגר<span className="text-accent">.il</span>
         </div>
 
-        {/* Контакты */}
-        <div className="space-y-3 text-sm">
-          <a href={telHref} className="flex items-center gap-3 hover:text-accent">
-            <Phone size={18} />
+        {/* Контакты в строку */}
+        <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-2 text-sm text-muted">
+          <a href={telHref} className="transition-colors hover:text-accent">
             <span dir="ltr">{site.phoneDisplay}</span>
           </a>
-          <a href={mailHref} className="flex items-center gap-3 hover:text-accent">
-            <Mail size={18} />
-            <span>{site.email}</span>
+          <span className="h-3 w-px bg-line" aria-hidden />
+          <a href={mailHref} className="transition-colors hover:text-accent">
+            {site.email}
           </a>
-          <div className="flex items-center gap-3">
-            <MapPin size={18} />
-            <span>{site.address}</span>
-          </div>
+          <span className="h-3 w-px bg-line" aria-hidden />
+          <span>{site.address}</span>
         </div>
 
-        {/* Действия + соцсети */}
-        <div className="flex flex-col items-start gap-5">
+        {/* Соцсети */}
+        <div className="flex gap-3">
           <a
-            href={telHref}
-            className={cn(buttonVariants({ variant: "primary", size: "md" }))}
+            href={site.instagram}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Instagram"
+            className="border border-line p-2.5 text-primary transition-colors hover:border-accent hover:text-accent"
           >
-            <Phone size={18} />
-            {tc("callButton")}
+            <FaInstagram size={18} />
           </a>
-          <div>
-            <div className="mb-2 text-sm text-bg/70">{t("followUs")}</div>
-            <div className="flex gap-3">
-              <a
-                href={site.instagram}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="rounded-full border border-bg/30 p-2 hover:border-accent hover:text-accent"
-              >
-                <FaInstagram size={20} />
-              </a>
-              <a
-                href={site.facebook}
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Facebook"
-                className="rounded-full border border-bg/30 p-2 hover:border-accent hover:text-accent"
-              >
-                <FaFacebookF size={20} />
-              </a>
-            </div>
-          </div>
+          <a
+            href={site.facebook}
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Facebook"
+            className="border border-line p-2.5 text-primary transition-colors hover:border-accent hover:text-accent"
+          >
+            <FaFacebookF size={18} />
+          </a>
+        </div>
+
+        <div className="text-xs tracking-wider text-muted/70">
+          © 2026 נגר.il — {t("rights")}
         </div>
       </Container>
-
-      <div className="border-t border-bg/15 py-5 text-center text-xs text-bg/60">
-        © 2026 נגר.il — {t("rights")}
-      </div>
     </footer>
   );
 };

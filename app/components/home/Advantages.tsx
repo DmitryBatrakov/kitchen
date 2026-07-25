@@ -24,17 +24,24 @@ export function Advantages() {
   const t = useTranslations("advantages");
 
   return (
-    <Section>
-      <div className="grid grid-cols-2 gap-6 sm:grid-cols-3 lg:grid-cols-4">
+    <Section className="border-b border-line/60">
+      <div className="mb-14 text-center">
+        <span className="eyebrow eyebrow--center">{t("eyebrow")}</span>
+        <h2 className="mt-5 font-serif text-3xl font-medium text-primary sm:text-4xl lg:text-[2.75rem]">
+          {t("title")}
+        </h2>
+      </div>
+
+      <div className="grid grid-cols-2 gap-px border border-line bg-line sm:grid-cols-3 lg:grid-cols-4">
         {ITEMS.map(({ key, Icon }) => (
           <div
             key={key}
-            className="flex flex-col items-center gap-3 rounded-2xl border border-primary/10 p-6 text-center"
+            className="group flex flex-col items-center gap-4 bg-bg p-8 text-center transition-colors duration-300 hover:bg-surface"
           >
             <span className="text-accent">
-              <Icon size={36} strokeWidth={1.5} />
+              <Icon size={34} strokeWidth={1.3} />
             </span>
-            <span className="text-sm font-medium text-primary sm:text-base">
+            <span className="text-sm leading-snug text-primary/85 sm:text-base">
               {t(`items.${key}`)}
             </span>
           </div>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Heebo, Inter } from "next/font/google";
+import { Heebo, Inter, Frank_Ruhl_Libre } from "next/font/google";
 import { notFound } from "next/navigation";
 import { NextIntlClientProvider, hasLocale } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -20,6 +20,14 @@ const heebo = Heebo({
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin", "cyrillic"],
+  display: "swap",
+});
+
+// Frank Ruhl Libre — благородный serif (иврит + латиница) для заголовков.
+const frank = Frank_Ruhl_Libre({
+  variable: "--font-frank",
+  subsets: ["hebrew", "latin"],
+  weight: ["400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -71,12 +79,12 @@ export default async function LocaleLayout({
     <html
       lang={locale}
       dir={dir}
-      className={`${heebo.variable} ${inter.variable} h-full antialiased`}
+      className={`${heebo.variable} ${inter.variable} ${frank.variable} h-full antialiased`}
     >
       <body className="bg-bg text-primary min-h-full flex flex-col font-sans">
         <NextIntlClientProvider>
           <Header />
-          <main className="flex-1">{children}</main>
+          <main className="flex-1 pt-18 lg:pt-20">{children}</main>
           <Footer />
         </NextIntlClientProvider>
       </body>

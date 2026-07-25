@@ -20,7 +20,7 @@ export function PhotoCarousel({
   return (
     <div
       className={cn(
-        "relative aspect-[4/3] w-full overflow-hidden rounded-2xl",
+        "relative aspect-4/3 w-full overflow-hidden",
         className
       )}
     >
@@ -41,7 +41,7 @@ export function PhotoCarousel({
         type="button"
         onClick={() => go(-1)}
         aria-label="previous"
-        className="absolute start-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 text-primary shadow transition hover:bg-white"
+        className="absolute start-3 top-1/2 -translate-y-1/2 bg-bg/90 p-2 text-primary transition hover:bg-bg"
       >
         <ChevronLeft className="rtl:rotate-180" size={22} />
       </button>
@@ -49,7 +49,7 @@ export function PhotoCarousel({
         type="button"
         onClick={() => go(1)}
         aria-label="next"
-        className="absolute end-3 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-1.5 text-primary shadow transition hover:bg-white"
+        className="absolute end-3 top-1/2 -translate-y-1/2 bg-bg/90 p-2 text-primary transition hover:bg-bg"
       >
         <ChevronRight className="rtl:rotate-180" size={22} />
       </button>
