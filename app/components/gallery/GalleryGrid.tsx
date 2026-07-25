@@ -1,20 +1,20 @@
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
+import Image from "next/image";
 import { X, ChevronLeft, ChevronRight } from "lucide-react";
-import { cn } from "../../lib/utils";
 
-// TODO(assets): заменить градиенты на реальные фото проектов (next/image).
-const GRADIENTS = [
-  "from-[#3e362e] to-[#6b5d4b]",
-  "from-[#5a4a3a] to-[#2a241d]",
-  "from-[#4a4038] to-[#7a6a55]",
-  "from-[#2d2722] to-[#574b3c]",
-  "from-[#6b5d4b] to-[#3e362e]",
-  "from-[#7a6a55] to-[#4a4038]",
-  "from-[#2a241d] to-[#5a4a3a]",
-  "from-[#574b3c] to-[#2d2722]",
-  "from-[#4a4038] to-[#6b5d4b]",
+// TODO(assets): временные референс-снимки; заменить на фото проектов студии.
+const PHOTOS = [
+  "/images/kitchen_calacatta.png",
+  "/images/kitchen_emerald.png",
+  "/images/kitchen_nero.png",
+  "/images/kitchen_patagonia.png",
+  "/images/kitchen_blue_roma.png",
+  "/images/calacatta.png",
+  "/images/carrara.png",
+  "/images/nero_marquina.png",
+  "/images/craftsman.png",
 ];
 
 export function GalleryGrid() {
@@ -24,7 +24,7 @@ export function GalleryGrid() {
   const move = useCallback(
     (dir: number) =>
       setActive((i) =>
-        i === null ? i : (i + dir + GRADIENTS.length) % GRADIENTS.length
+        i === null ? i : (i + dir + PHOTOS.length) % PHOTOS.length
       ),
     []
   );
@@ -44,20 +44,21 @@ export function GalleryGrid() {
   return (
     <>
       <div className="grid grid-cols-2 gap-4 sm:grid-cols-3">
-        {GRADIENTS.map((grad, i) => (
+        {PHOTOS.map((src, i) => (
           <button
             key={i}
             type="button"
             onClick={() => setActive(i)}
-            className={cn(
-              "group relative aspect-square overflow-hidden rounded-xl bg-linear-to-br",
-              grad
-            )}
+            className="group relative aspect-square overflow-hidden border border-line"
           >
-            <span className="absolute inset-0 flex items-center justify-center text-sm text-white/40 transition-opacity group-hover:opacity-0">
-              photo {i + 1}
-            </span>
-            <span className="absolute inset-0 bg-black/0 transition-colors group-hover:bg-black/20" />
+            <Image
+              src={src}
+              alt=""
+              fill
+              sizes="(max-width: 640px) 50vw, 33vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <span className="absolute inset-0 bg-ink/0 transition-colors group-hover:bg-ink/30" />
           </button>
         ))}
       </div>
@@ -88,13 +89,16 @@ export function GalleryGrid() {
             <ChevronLeft className="rtl:rotate-180" size={30} />
           </button>
           <div
-            className={cn(
-              "flex aspect-[4/3] w-full max-w-4xl items-center justify-center rounded-2xl bg-linear-to-br text-white/50",
-              GRADIENTS[active]
-            )}
+            className="relative aspect-square w-full max-w-2xl overflow-hidden"
             onClick={(e) => e.stopPropagation()}
           >
-            photo {active + 1}
+            <Image
+              src={PHOTOS[active]}
+              alt=""
+              fill
+              sizes="(max-width: 768px) 100vw, 672px"
+              className="object-contain"
+            />
           </div>
           <button
             type="button"

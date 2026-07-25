@@ -1,31 +1,27 @@
 import { useTranslations } from "next-intl";
 import { Section } from "../ui/Section";
-import { PhotoCarousel } from "../ui/PhotoCarousel";
 
-const ABOUT_SLIDES = [
-  "from-[#3e362e] to-[#6b5d4b]",
-  "from-[#5a4a3a] to-[#2a241d]",
-  "from-[#4a4038] to-[#7a6a55]",
-];
-
+// Философия студии — двухколоночный текстовый блок (как секция
+// «אלגנטיות נצחית של אבן» в примере): заголовок + абзац на тёмном фоне.
 export function About() {
   const t = useTranslations("about");
 
   return (
-    <Section id="about">
-      <div className="grid items-center gap-10 lg:grid-cols-2 lg:gap-16">
-        {/* Текст */}
-        <div>
-          <h2 className="text-3xl font-bold leading-tight text-primary sm:text-4xl">
+    <Section id="about" className="border-b border-line/60">
+      <div className="grid gap-10 lg:grid-cols-2 lg:gap-20">
+        <div className="reveal">
+          <span className="eyebrow">{t("eyebrow")}</span>
+          <h2 className="mt-6 font-serif text-3xl font-medium leading-[1.15] text-primary sm:text-4xl lg:text-[3rem]">
             {t("title")}
           </h2>
-          <p className="mt-6 text-lg leading-relaxed text-primary/80">
-            {t("text")}
-          </p>
         </div>
 
-        {/* Карусель фото */}
-        <PhotoCarousel slides={ABOUT_SLIDES} />
+        <div className="reveal flex items-end">
+          <div>
+            <div className="mb-6 h-px w-16 bg-accent" />
+            <p className="text-lg leading-relaxed text-muted">{t("text")}</p>
+          </div>
+        </div>
       </div>
     </Section>
   );

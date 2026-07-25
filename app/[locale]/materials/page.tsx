@@ -1,4 +1,5 @@
 import { use } from "react";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
 import { getTranslations, setRequestLocale } from "next-intl/server";
@@ -37,40 +38,50 @@ export default function MaterialsPage({
   const t = useTranslations("materials");
 
   return (
-    <div className="py-16 sm:py-20">
+    <div className="py-16 sm:py-24">
       <Container className="max-w-4xl">
         {/* Заголовок + интро */}
-        <h1 className="text-4xl font-bold text-primary sm:text-5xl">
+        <span className="eyebrow">{t("eyebrow")}</span>
+        <h1 className="mt-5 font-serif text-4xl font-medium leading-tight text-primary sm:text-5xl lg:text-6xl">
           {t("title")}
         </h1>
-        <p className="mt-6 text-lg leading-relaxed text-primary/80">
+        <div className="mt-6 h-px w-16 bg-accent" />
+        <p className="mt-6 text-lg leading-relaxed text-primary/75">
           {t("intro")}
         </p>
 
         {/* Корпус */}
         <section className="mt-14">
-          <h2 className="flex items-center gap-3 text-2xl font-semibold text-primary">
+          <h2 className="flex items-center gap-3 font-serif text-2xl font-medium text-primary sm:text-3xl">
             <Layers className="text-accent" size={26} />
             {t("base.title")}
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-primary/80">
             {t("base.text")}
           </p>
-          {/* TODO(assets): фото фанеры / корпуса */}
-          <div className="mt-6 aspect-[16/9] rounded-2xl bg-linear-to-br from-[#5a4a3a] to-[#2a241d]" />
+          {/* TODO(assets): референс-снимок; заменить на фото корпуса/фанеры */}
+          <div className="relative mt-8 aspect-video overflow-hidden border border-line">
+            <Image
+              src="/images/kitchen_nero.png"
+              alt=""
+              fill
+              sizes="(max-width: 896px) 100vw, 896px"
+              className="object-cover"
+            />
+          </div>
         </section>
 
         {/* Фасады */}
         <section className="mt-14">
-          <h2 className="text-2xl font-semibold text-primary">
+          <h2 className="font-serif text-2xl font-medium text-primary sm:text-3xl">
             {t("fronts.title")}
           </h2>
           <p className="mt-4 text-lg leading-relaxed text-primary/80">
             {t("fronts.intro")}
           </p>
           <div className="mt-6 grid gap-6 sm:grid-cols-2">
-            <div className="rounded-2xl border border-primary/10 bg-bg p-6">
-              <h3 className="flex items-center gap-2 text-xl font-semibold text-primary">
+            <div className="border border-line bg-surface p-8">
+              <h3 className="flex items-center gap-2 font-serif text-xl font-medium text-primary">
                 <Paintbrush className="text-accent" size={22} />
                 {t("fronts.paint.title")}
               </h3>
@@ -78,8 +89,8 @@ export default function MaterialsPage({
                 {t("fronts.paint.text")}
               </p>
             </div>
-            <div className="rounded-2xl border border-primary/10 bg-bg p-6">
-              <h3 className="flex items-center gap-2 text-xl font-semibold text-primary">
+            <div className="border border-line bg-surface p-8">
+              <h3 className="flex items-center gap-2 font-serif text-xl font-medium text-primary">
                 <Grid3x3 className="text-accent" size={22} />
                 {t("fronts.formica.title")}
               </h3>
@@ -92,17 +103,17 @@ export default function MaterialsPage({
 
         {/* Бренды формики */}
         <section className="mt-14">
-          <h2 className="text-2xl font-semibold text-primary">
+          <h2 className="font-serif text-2xl font-medium text-primary sm:text-3xl">
             {t("formica.title")}
           </h2>
           <div className="mt-6 space-y-4">
             {FORMICA_BRANDS.map((brand) => (
               <div
                 key={brand}
-                className="flex flex-col gap-3 rounded-2xl border border-primary/10 p-5 sm:flex-row sm:items-start sm:gap-5"
+                className="flex flex-col gap-4 border border-line p-6 sm:flex-row sm:items-start sm:gap-6"
               >
                 {/* Плейсхолдер логотипа */}
-                <div className="flex h-16 w-32 shrink-0 items-center justify-center rounded-lg bg-primary/5 text-sm font-bold text-primary/60">
+                <div className="flex h-16 w-32 shrink-0 items-center justify-center border border-line bg-surface text-sm font-semibold text-primary/60">
                   {t(`formica.brands.${brand}.name`)}
                 </div>
                 <p className="leading-relaxed text-primary/80">
@@ -115,7 +126,7 @@ export default function MaterialsPage({
 
         {/* Фурнитура */}
         <section className="mt-14">
-          <h2 className="flex items-center gap-3 text-2xl font-semibold text-primary">
+          <h2 className="flex items-center gap-3 font-serif text-2xl font-medium text-primary sm:text-3xl">
             <Cog className="text-accent" size={26} />
             {t("hardware.title")}
           </h2>
@@ -126,7 +137,7 @@ export default function MaterialsPage({
             {HARDWARE_BRANDS.map((name) => (
               <div
                 key={name}
-                className="flex h-16 w-36 items-center justify-center rounded-lg bg-primary/5 text-lg font-bold text-primary/60"
+                className="flex h-16 w-36 items-center justify-center border border-line bg-surface text-lg font-semibold text-primary/60"
               >
                 {name}
               </div>

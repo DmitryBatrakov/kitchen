@@ -3,9 +3,10 @@ import { setRequestLocale } from "next-intl/server";
 import { Hero } from "../components/home/Hero";
 import { About } from "../components/home/About";
 import { Services } from "../components/home/Services";
+import { Portfolio } from "../components/home/Portfolio";
 import { VideoSection } from "../components/home/VideoSection";
-import { Advantages } from "../components/home/Advantages";
 import { WhyUs } from "../components/home/WhyUs";
+import { Advantages } from "../components/home/Advantages";
 import { MiniContact } from "../components/home/MiniContact";
 
 export default function Home({
@@ -22,9 +23,10 @@ export default function Home({
       <Hero />
       <About />
       <Services />
+      <Portfolio />
       <VideoSection />
-      <Advantages />
       <WhyUs />
+      <Advantages />
       <MiniContact />
     </>
   );

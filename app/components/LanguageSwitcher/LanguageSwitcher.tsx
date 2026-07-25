@@ -28,22 +28,24 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   }
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
-      {routing.locales.map((loc) => (
-        <button
-          key={loc}
-          type="button"
-          onClick={() => switchTo(loc)}
-          aria-current={loc === locale ? "true" : undefined}
-          className={cn(
-            "rounded-full px-2.5 py-1 text-sm font-semibold transition-colors",
-            loc === locale
-              ? "bg-primary text-bg"
-              : "text-primary/70 hover:text-primary"
-          )}
-        >
-          {labels[loc] ?? loc.toUpperCase()}
-        </button>
+    <div className={cn("flex items-center gap-3", className)}>
+      {routing.locales.map((loc, i) => (
+        <div key={loc} className="flex items-center gap-3">
+          {i > 0 && <span className="h-3 w-px bg-line" aria-hidden />}
+          <button
+            type="button"
+            onClick={() => switchTo(loc)}
+            aria-current={loc === locale ? "true" : undefined}
+            className={cn(
+              "text-xs font-semibold uppercase tracking-[0.16em] transition-colors",
+              loc === locale
+                ? "text-accent"
+                : "text-primary/50 hover:text-primary"
+            )}
+          >
+            {labels[loc] ?? loc.toUpperCase()}
+          </button>
+        </div>
       ))}
     </div>
   );
