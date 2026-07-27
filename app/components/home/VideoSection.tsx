@@ -31,7 +31,7 @@ export function VideoSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, amount: 0.6 }}
                 transition={{ duration: 0.5, delay: i * 0.12 }}
-                className="flex gap-5 py-6 first:pt-0"
+                className="flex gap-5 py-6 first:pt-0 items-start justify-start"
               >
                 <span className="font-serif text-lg leading-none text-accent">
                   0{i + 1}

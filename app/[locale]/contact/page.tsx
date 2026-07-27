@@ -7,6 +7,7 @@ import { Phone, Mail, MapPin, Languages, Navigation } from "lucide-react";
 import { FaInstagram, FaFacebookF } from "react-icons/fa";
 import { Container } from "../../components/ui/Container";
 import { buttonVariants } from "../../components/ui/Button";
+import { ContactForm } from "../../components/contact/ContactForm";
 import { site, telHref, mailHref } from "../../lib/site";
 import { cn } from "../../lib/utils";
 
@@ -40,7 +41,10 @@ export default function ContactPage({
           <p className="mt-4 text-lg text-primary/65">{t("subtitle")}</p>
         </div>
 
-        <div className="grid items-start gap-12 lg:grid-cols-2">
+        <div className="grid items-start gap-12 lg:grid-cols-2 lg:gap-20">
+          {/* Форма заявки */}
+          <ContactForm />
+
           {/* Фото в арке + контактные данные */}
           <div className="flex flex-col items-center">
             {/* TODO(assets): референс-снимок; заменить на фото мастерской/команды */}
@@ -98,43 +102,43 @@ export default function ContactPage({
               </a>
             </div>
           </div>
+        </div>
 
-          {/* Карта + действия */}
-          <div className="flex flex-col gap-6">
-            <div className="overflow-hidden border border-line">
-              <iframe
-                title="map"
-                src={site.mapEmbed}
-                className="h-80 w-full"
-                loading="lazy"
-                referrerPolicy="no-referrer-when-downgrade"
-              />
-            </div>
+        {/* Карта + действия */}
+        <div className="mt-12 flex flex-col gap-6 lg:mt-20">
+          <div className="overflow-hidden border border-line">
+            <iframe
+              title="map"
+              src={site.mapEmbed}
+              className="h-80 w-full lg:h-96"
+              loading="lazy"
+              referrerPolicy="no-referrer-when-downgrade"
+            />
+          </div>
 
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <a
-                href={site.waze}
-                target="_blank"
-                rel="noopener noreferrer"
-                className={cn(
-                  buttonVariants({ variant: "outline", size: "lg" }),
-                  "flex-1"
-                )}
-              >
-                <Navigation size={20} />
-                {t("wazeButton")}
-              </a>
-              <a
-                href={telHref}
-                className={cn(
-                  buttonVariants({ variant: "primary", size: "lg" }),
-                  "flex-1"
-                )}
-              >
-                <Phone size={20} />
-                {t("callButton")}
-              </a>
-            </div>
+          <div className="flex flex-col gap-3 sm:flex-row">
+            <a
+              href={site.waze}
+              target="_blank"
+              rel="noopener noreferrer"
+              className={cn(
+                buttonVariants({ variant: "outline", size: "lg" }),
+                "flex-1"
+              )}
+            >
+              <Navigation size={20} />
+              {t("wazeButton")}
+            </a>
+            <a
+              href={telHref}
+              className={cn(
+                buttonVariants({ variant: "primary", size: "lg" }),
+                "flex-1"
+              )}
+            >
+              <Phone size={20} />
+              {t("callButton")}
+            </a>
           </div>
         </div>
       </Container>
