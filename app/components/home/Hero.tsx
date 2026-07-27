@@ -5,14 +5,13 @@ import { Container } from "../ui/Container";
 import { buttonVariants } from "../ui/Button";
 import { cn } from "../../lib/utils";
 
-// TODO(assets): hero_bg.png — временный референс-снимок; заменить на
-// собственную лицензированную фотографию кухни студии.
+
 export function Hero() {
   const t = useTranslations("hero");
 
   return (
     <section className="relative -mt-18 flex h-svh min-h-150 w-full items-center justify-center overflow-hidden bg-ink lg:-mt-20">
-      {/* Фон — фотография */}
+      {/* Фон — фотографи */}
       <Image
         src="/images/hero_bg.png"
         alt=""
@@ -22,10 +21,8 @@ export function Hero() {
         className="object-cover"
       />
 
-      {/* Виньетка для читаемости и глубины */}
-      <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/40 to-ink/60" />
+      <div className="absolute inset-0 bg-linear-to-t from-ink via-ink/30 to-ink/70" />
 
-      {/* Контент */}
       <Container className="relative flex flex-col items-center text-center">
         <span className="eyebrow eyebrow--center">{t("eyebrow")}</span>
 
@@ -33,7 +30,7 @@ export function Hero() {
           {t("headline")}
         </h1>
 
-        <p className="mt-8 max-w-xl text-base leading-relaxed text-primary/80 sm:text-lg">
+        <p className="mt-8 max-w-xl text-base leading-relaxed text-primary/90 sm:text-lg">
           {t("subtitle")}
         </p>
 
@@ -45,7 +42,6 @@ export function Hero() {
         </Link>
       </Container>
 
-      {/* Скролл-подсказка */}
       <div className="absolute inset-x-0 bottom-8 flex flex-col items-center gap-2 text-primary/60">
         <span className="text-[0.65rem] font-medium uppercase tracking-wider2">
           {t("scroll")}

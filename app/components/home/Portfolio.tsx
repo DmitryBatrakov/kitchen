@@ -59,19 +59,19 @@ export function Portfolio() {
       <div className="mt-8 flex items-center justify-center gap-4">
         <button
           type="button"
-          onClick={() => go(1)}
-          aria-label="next"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-line text-primary transition-colors hover:border-accent hover:text-accent"
+          onClick={() => go(-1)}
+          aria-label="previous"
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-line text-primary transition-colors hover:border-accent hover:text-accent cursor-pointer"
         >
-          <ArrowRight className="rtl:rotate-180" size={20} />
+          <ArrowLeft className="rtl:rotate-180" size={20} />
         </button>
         <button
           type="button"
-          onClick={() => go(-1)}
-          aria-label="previous"
-          className="flex h-12 w-12 items-center justify-center rounded-full border border-line text-primary transition-colors hover:border-accent hover:text-accent"
+          onClick={() => go(1)}
+          aria-label="next"
+          className="flex h-12 w-12 items-center justify-center rounded-full border border-line text-primary transition-colors hover:border-accent hover:text-accent cursor-pointer"
         >
-          <ArrowLeft className="rtl:rotate-180" size={20} />
+          <ArrowRight className="rtl:rotate-180" size={20} />
         </button>
       </div>
 

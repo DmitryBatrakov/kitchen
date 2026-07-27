@@ -7,7 +7,6 @@ import { Portfolio } from "../components/home/Portfolio";
 import { VideoSection } from "../components/home/VideoSection";
 import { WhyUs } from "../components/home/WhyUs";
 import { Advantages } from "../components/home/Advantages";
-import { MiniContact } from "../components/home/MiniContact";
 
 export default function Home({
   params,
@@ -27,7 +26,6 @@ export default function Home({
       <VideoSection />
       <WhyUs />
       <Advantages />
-      <MiniContact />
     </>
   );
 }

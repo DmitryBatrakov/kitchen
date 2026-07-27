@@ -11,7 +11,6 @@ const labels: Record<string, string> = {
   ru: "RU",
 };
 
-// Компактный переключатель локали с сохранением текущего маршрута.
 export function LanguageSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const router = useRouter();
@@ -37,7 +36,7 @@ export function LanguageSwitcher({ className }: { className?: string }) {
             onClick={() => switchTo(loc)}
             aria-current={loc === locale ? "true" : undefined}
             className={cn(
-              "text-xs font-semibold uppercase tracking-[0.16em] transition-colors",
+              "text-xs font-semibold uppercase tracking-[0.16em] transition-colors cursor-pointer",
               loc === locale
                 ? "text-accent"
                 : "text-primary/50 hover:text-primary"

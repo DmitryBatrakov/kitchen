@@ -48,6 +48,7 @@ export const Header = () => {
         <Link
           href="/"
           onClick={() => setIsMobileOpen(false)}
+          dir="ltr"
           className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 font-serif text-2xl font-medium tracking-[0.15em] text-primary lg:text-3xl"
         >
           נגר<span className="text-accent">.il</span>

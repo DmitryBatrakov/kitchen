@@ -7,10 +7,10 @@
   --color-surface: #19140f; /* карточки / приподнятые панели */
   --color-surface2: #221b15; /* второй уровень поверхности */
   --color-line: #2c241c; /* тонкие разделители на тёмном */
-  --color-primary: #ece6db; /* основной текст / заголовки (кремовый) */
+  --color-primary: #ded7ca; /* основной текст / заголовки (мягкий кремовый) */
   --color-muted: #9a8f81; /* второстепенный текст */
-  --color-accent: #b58a54; /* латунь / бронза */
-  --color-accent-hover: #c99e64;
+  --color-accent: #d6af78; /* латунь / бронза (осветлённая) */
+  --color-accent-hover: #e3c191;
 
   /* Шрифты: Frank Ruhl Libre — serif для заголовков (иврит+латиница);
      Heebo/Inter — санс для текста и кириллицы. */
@@ -18,10 +18,6 @@
   --font-sans: var(--font-heebo), var(--font-inter), system-ui, sans-serif;
 
   --tracking-wider2: 0.24em;
-}
-
-html {
-  scroll-behavior: smooth;
 }
 
 body {
