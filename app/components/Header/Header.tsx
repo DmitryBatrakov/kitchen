@@ -35,6 +35,7 @@ export const Header = () => {
   }, []);
 
   return (
+    <>
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
@@ -43,7 +44,7 @@ export const Header = () => {
           : "border-b border-transparent bg-transparent"
       )}
     >
-      <Container className="relative flex h-18 items-center justify-between lg:h-20">
+      <Container className="relative z-50 flex h-18 items-center justify-between lg:h-20">
         {/* Бренд — по центру */}
         <Link
           href="/"
@@ -109,29 +110,32 @@ export const Header = () => {
           {isMobileOpen ? <X size={26} /> : <Menu size={26} />}
         </button>
       </Container>
+    </header>
 
-      {/* Мобильное меню */}
+      {/* Мобильное меню — на весь экран, пункты по центру, каскадом */}
       {isMobileOpen && (
-        <div className="border-t border-line bg-bg lg:hidden">
-          <Container className="flex flex-col py-4">
-            {[...startNav, ...endNav, { key: "contact", href: "/contact" }].map(
-              (item) => (
-                <Link
-                  key={item.key}
-                  href={item.href}
-                  onClick={() => setIsMobileOpen(false)}
-                  className="border-b border-line/60 px-1 py-4 text-sm font-medium uppercase tracking-[0.16em] text-primary/90 last:border-0 hover:text-accent"
-                >
-                  {t(item.key)}
-                </Link>
-              )
-            )}
-            <div className="px-1 pt-5">
-              <LanguageSwitcher />
-            </div>
-          </Container>
+        <div className="menu-overlay fixed inset-0 z-40 flex flex-col items-center justify-center gap-15 bg-bg lg:hidden">
+          {[...startNav, ...endNav, { key: "contact", href: "/contact" }].map(
+            (item, i) => (
+              <Link
+                key={item.key}
+                href={item.href}
+                onClick={() => setIsMobileOpen(false)}
+                style={{ animationDelay: `${80 + i * 70}ms` }}
+                className="menu-reveal font-serif text-3xl font-medium tracking-wide text-primary transition-colors hover:text-accent"
+              >
+                {t(item.key)}
+              </Link>
+            )
+          )}
+          <div
+            style={{ animationDelay: `${80 + 4 * 70}ms` }}
+            className="menu-reveal mt-2"
+          >
+            <LanguageSwitcher />
+          </div>
         </div>
       )}
-    </header>
+    </>
   );
 };
