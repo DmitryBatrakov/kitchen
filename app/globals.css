@@ -71,3 +71,32 @@ body {
     animation-range: entry 0% cover 30%;
   }
 }
+
+/* Мобильное меню: плавное появление оверлея и каскад пунктов
+   (задержка каждого задаётся инлайн через animation-delay). */
+@keyframes menu-overlay-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes menu-item-in {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+@media (prefers-reduced-motion: no-preference) {
+  .menu-overlay {
+    animation: menu-overlay-in 0.35s ease both;
+  }
+  .menu-reveal {
+    animation: menu-item-in 0.55s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+}
